@@ -5,7 +5,7 @@
 % on rigid body motion.  The mass of the body can be assigned to the rigid
 % body or distributed across each interface frame.
 % 
-% Copyright 2016-2018 The MathWorks, Inc.
+% Copyright 2016-2019 The MathWorks, Inc.
 
 
 %% Model

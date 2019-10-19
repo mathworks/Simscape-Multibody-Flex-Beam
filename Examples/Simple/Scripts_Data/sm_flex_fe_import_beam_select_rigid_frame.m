@@ -2,7 +2,7 @@ function sm_flex_fe_import_beam_select_rigid_frame(modelname,rigidframe)
 % This function configures the degrees of freedom at each interface frame.
 % There is only one rigid connection, the rest have 6 degrees of freedom.
 
-% Copyright 2017-2018 The MathWorks, Inc.
+% Copyright 2017-2019 The MathWorks, Inc.
 
 % Source library for flexible beam element
 library_name = 'sm_flex_body_lib';
