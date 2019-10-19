@@ -3,6 +3,9 @@ Copyright 2017-2019 The MathWorks, Inc.
 
 This set of files contains a library and examples that show
 how to model flexible bodies using Simscape Multibody. 
+Please note that the General Flexible Beam block was added
+in R2018b and the Reduced Order Flexible Solid block 
+was added in R2019b.
 
 Two methods are shown:
   1. Lumped parameter method
@@ -22,7 +25,10 @@ See the examples to understand how the blocks are used.
 
 
 #########  Release History  #########  
-v 3.4 (R2018a)	Mar 2018      Updated for R2018b
+v 4.0 (R2019b)	Mar 2018      Updated for R2019b
+                              Uses MATLAB Project
+
+v 3.4 (R2018b)	Mar 2018      Updated for R2018b
 
 v 3.3 (R2018a)	Mar 2018      Updated for R2018a
 

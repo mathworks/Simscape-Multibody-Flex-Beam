@@ -9,16 +9,19 @@ function [Nf, frameBody, frameGraphic] = sm_flex_body_lib_fei_configure_beam(blk
 frames_h = find_system(blk_h,'LookUnderMasks','all','FollowLinks','on','SearchDepth',1,'regexp','on','Variant','on','Name','Frame.*');
 Nf = length(frames_h);
 
-% Set properties in Solid block representing single rigid body 
+% Set properties in Solid block representing single rigid body
 % Set file name
 blk_rb = [blk_h '/Rigid Body'];
 rigid_body_filename = get_param(blk_h,'rigid_body_filename');
 rigid_body_filename = rigid_body_filename(2:end-1);
 set_param(blk_rb, 'ExtGeomFileName', rigid_body_filename);
-if(strcmpi(rigid_body_filename(end-2:end),'stl'))
-    set_param(blk_rb, 'ExtGeomFileType', 'STL');
-else
-    set_param(blk_rb, 'ExtGeomFileType', 'STEP');
+
+if(verLessThan('matlab','9.7'))
+    if(strcmpi(rigid_body_filename(end-2:end),'stl'))
+        set_param(blk_rb, 'ExtGeomFileType', 'STL');
+    else
+        set_param(blk_rb, 'ExtGeomFileType', 'STEP');
+    end
 end
 
 % Check configuration for mass distribution
@@ -43,7 +46,7 @@ if piecesBody
     % Assign mass to interface frames using mask parameter
     frameBody = splitBodyProps;
 else
-	% Set minimum mass and inertia to interface frames
+    % Set minimum mass and inertia to interface frames
     for k = 1:Nf
         frameBody(k).dim    = str2num(get_param(blk_h, 'smallInertiaDim'))*ones(1,3); %#ok<*AGROW,*ST2NM>
         frameBody(k).mass   = str2num(get_param(blk_h, 'smallInertiaMass'));
@@ -71,14 +74,14 @@ rigid_fr = find_system(blk_h,'LookUnderMasks','all','FollowLinks','on','ActiveVa
 
 for i=1:length(rigid_fr)
     rigid_frame_name = get_param(rigid_fr{i},'Name');
-
+    
     % Configure degrees of freedom for flexible frames only
     if(~strcmpi(rigid_frame_name,['Frame ' get_param(blk_h,'rigidBodyFrame')]))
         set_param(rigid_fr{i},'OverrideUsingVariant','Flex');
     end
 end
 
-% Set degrees of freedom to zero for one interface frame 
+% Set degrees of freedom to zero for one interface frame
 % as specified in block mask
 set_param([blk_h '/Frame ' get_param(blk_h,'rigidBodyFrame')],'OverrideUsingVariant','Rigid');
 
