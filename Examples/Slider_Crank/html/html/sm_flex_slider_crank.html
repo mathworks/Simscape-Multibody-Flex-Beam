@@ -1,0 +1,144 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>Flexible Body Slider Crank</title><meta name="generator" content="MATLAB 9.1"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2017-10-23"><meta name="DC.source" content="sm_flex_slider_crank.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1>Flexible Body Slider Crank</h1><!--introduction--><p>This example shows a slider crank modeled using flexible bodies. The crankshaft and the connecting rod can each be configured to use a lumped parameter flexible beam model or to model flexibility using data imported from finite element software</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Model</a></li><li><a href="#2">Results from Simscape Logging: Comparison with Literature</a></li><li><a href="#5">Results from Simscape Logging: Slider Strikes Hard Stop</a></li></ul></div><h2 id="1">Model</h2><img vspace="5" hspace="5" src="sm_flex_slider_crank_01.png" style="width:615px;height:378px;" alt=""> <h2 id="2">Results from Simscape Logging: Comparison with Literature</h2><p>The plot below shows the deflection of the connecting rod midpoint relative to an imaginary line connecting the endpoints of the rod.  The conditions for the simulation match a documented case that used another widely used approach for flexible multibody simulation [1].  The results match quite closely.</p><p><b>Test using beam modeled with data exported from finite element software</b></p><img vspace="5" hspace="5" src="sm_flex_slider_crank_02.png" style="width:560px;height:420px;" alt=""> <p><b>Test using beam modeled using lumped parameter method</b></p><img vspace="5" hspace="5" src="sm_flex_slider_crank_03.png" style="width:560px;height:420px;" alt=""> <p><i>[1] Escalona, J.L., H.A. Hussien, and A.A. Shabana. "APPLICATION OF THE ABSOLUTE NODAL CO-ORDINATE FORMULATION TO MULTIBODY SYSTEM DYNAMICS". Journal of Sound and Vibration 214.5 (1998): 833-851. Web. 26 May 2017.</i> https://doi.org/10.1006/jsvi.1998.1563</p><h2 id="5">Results from Simscape Logging: Slider Strikes Hard Stop</h2><p>The plot below shows the deflection of the connecting rod midpoint relative to the ends when the slider encounters a hard stop. This test was performed with the finite import method model with 5 interface frames.</p><img vspace="5" hspace="5" src="sm_flex_slider_crank_04.png" style="width:560px;height:420px;" alt=""> <p class="footer">Copyright 2016-2017 The MathWorks, Inc.<br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2016b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% Flexible Body Slider Crank
+% 
+% This example shows a slider crank modeled using flexible bodies. The
+% crankshaft and the connecting rod can each be configured to use a
+% lumped parameter flexible beam model or to model flexibility using data
+% imported from finite element software
+% 
+% Copyright 2016-2017 The MathWorks, Inc.
+
+
+%% Model
+
+open_system('sm_flex_slider_crank')
+hs_on = sm_flex_slider_crank_configure_hardstop(bdroot,'off');
+set_param(find_system('sm_flex_slider_crank','FindAll', 'on','type','annotation','Tag','ModelFeatures'),'Interpreter','off')
+set_param(bdroot,'SimulationCommand','update');
+
+%% Results from Simscape Logging: Comparison with Literature
+%
+% The plot below shows the deflection of the connecting rod midpoint
+% relative to an imaginary line connecting the endpoints of the rod.  The
+% conditions for the simulation match a documented case that used another
+% widely used approach for flexible multibody simulation [1].  The results
+% match quite closely.
+%
+% *Test using beam modeled with data exported from finite element software*
+
+hs_on = sm_flex_slider_crank_configure_hardstop(bdroot,'off');
+set_param([bdroot '/Rod'],'OverrideUsingVariant','FE_Import_5Frames');
+sim(bdroot)
+sm_flex_slider_crank_plot1roddef
+hold on
+load('UIC_Slider_Crank_Midpt.mat');
+plot(UIC_Slider_Crank_Midpt(:,1),UIC_Slider_Crank_Midpt(:,2));
+hold off
+legend({'Finite Element Import','Documented Test Case [1]'},'Location','Best');
+
+%%
+% *Test using beam modeled using lumped parameter method*
+
+set_param([bdroot '/Rod'],'OverrideUsingVariant','Lumped_Parameter');
+sim(bdroot)
+sm_flex_slider_crank_plot1roddef
+hold on
+plot(UIC_Slider_Crank_Midpt(:,1),UIC_Slider_Crank_Midpt(:,2));
+hold off
+legend({'Lumped Parameter','Documented Test Case [1]'},'Location','Best');
+
+%%
+% _[1] Escalona, J.L., H.A. Hussien, and A.A. Shabana. "APPLICATION OF THE
+% ABSOLUTE NODAL CO-ORDINATE FORMULATION TO MULTIBODY SYSTEM DYNAMICS". Journal of Sound and Vibration 214.5 (1998): 833-851. Web. 26 May 2017._
+% https://doi.org/10.1006/jsvi.1998.1563
+
+%% Results from Simscape Logging: Slider Strikes Hard Stop
+%
+% The plot below shows the deflection of the connecting rod midpoint
+% relative to the ends when the slider encounters a hard stop. This test
+% was performed with the finite import method model with 5 interface
+% frames.
+
+hs_on = sm_flex_slider_crank_configure_hardstop(bdroot,'on');
+set_param([bdroot '/Rod'],'OverrideUsingVariant','FE_Import_5Frames');
+hs_on = sm_flex_slider_crank_configure_hardstop(bdroot,'on');
+sim(bdroot)
+sm_flex_slider_crank_plot1roddef
+
+
+%%
+clear all
+close all
+bdclose all
+
+##### SOURCE END #####
+--></body></html>
