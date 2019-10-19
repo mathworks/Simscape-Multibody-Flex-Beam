@@ -1,6 +1,4 @@
 %% Generate Results: Lumped Parameter Beam, Vary Number of Elements
-% 
-% Copyright 2017 The MathWorks(TM), Inc.
 
 % Configure test
 open_system('sm_flex_lumped_param_beam');

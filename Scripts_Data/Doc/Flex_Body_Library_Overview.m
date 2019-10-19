@@ -40,5 +40,4 @@
 % flexible body (usually requires finite element software)
 % # The connection points to the rest of the system are known and not
 % likely to change.
-% 
-% Copyright 2017 The MathWorks(TM), Inc.
+%

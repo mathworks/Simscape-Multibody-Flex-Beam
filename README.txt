@@ -23,8 +23,8 @@ See the examples to understand how the blocks are used.
 
 #########  Release History  #########  
 v 3.2 (R2017b)	Oct  2017      Damping parameterized with damping factor 
-                Replaced damping coefficient parameter in lumped parameter 
-                beam with damping factor.  This permits damping value to 
+      (R2017a)  Replaced damping coefficient parameter in lumped parameter 
+      (R2016b)  beam with damping factor.  This permits damping value to 
                 scale with geometry and material.  Damping coefficient
                 entered in flexible elements = (damping factor*stiffness).
                                 
