@@ -2,7 +2,7 @@ function hs_on = sm_flex_slider_crank_configure_hardstop(modelname,enable)
 % sm_flex_slider_crank_configure_hardstop  Enable/Disable hardstop in
 % model sm_flex_slider_crank
 
-% Copyright 2017 The MathWorks, Inc.
+% Copyright 2017-2018 The MathWorks, Inc.
 
 switch lower(enable)
     case 'on'

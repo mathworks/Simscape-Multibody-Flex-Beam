@@ -4,7 +4,7 @@
 % The plot below shows the deflection of the connecting rod midpoint
 % relative to the ends.
 %
-% Copyright 2017 The MathWorks, Inc.
+% Copyright 2017-2018 The MathWorks, Inc.
 
 % Generate simulation results if they don't exist
 if ~exist('simlog_sm_flex_slider_crank', 'var')

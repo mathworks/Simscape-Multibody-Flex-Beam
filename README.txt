@@ -1,5 +1,5 @@
 Simscape Multibody Flexible Body Library
-Copyright 2017 The MathWorks, Inc.
+Copyright 2017-2018 The MathWorks, Inc.
 
 This set of files contains a library and examples that show
 how to model flexible bodies using Simscape Multibody. 
@@ -22,6 +22,8 @@ See the examples to understand how the blocks are used.
 
 
 #########  Release History  #########  
+v 3.3 (R2018a)	Mar 2018      Updated for R2018a
+
 v 3.2 (R2017b)	Oct  2017      Damping parameterized with damping factor 
       (R2017a)  Replaced damping coefficient parameter in lumped parameter 
       (R2016b)  beam with damping factor.  This permits damping value to 

@@ -2,7 +2,7 @@ function sm_flex_fe_import_beam_select_massdistr(modelname,massdistr)
 % This function configures the mass distribution for the cantilever beam
 % in model sm_flex_fe_import_beam.slx.  
 
-% Copyright 2017 The MathWorks, Inc.
+% Copyright 2017-2018 The MathWorks, Inc.
 
 % Source library for flexible beam element
 library_name = 'sm_flex_body_lib';
