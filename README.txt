@@ -22,6 +22,8 @@ See the examples to understand how the blocks are used.
 
 
 #########  Release History  #########  
+v 3.4 (R2018a)	Mar 2018      Updated for R2018b
+
 v 3.3 (R2018a)	Mar 2018      Updated for R2018a
 
 v 3.2 (R2017b)	Oct  2017      Damping parameterized with damping factor 
