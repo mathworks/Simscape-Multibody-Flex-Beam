@@ -1,0 +1,231 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>Flexible Beam from Finite Element Data</title><meta name="generator" content="MATLAB 9.1"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2017-10-23"><meta name="DC.source" content="sm_flex_fe_import_beam.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1>Flexible Beam from Finite Element Data</h1><!--introduction--><p>This example shows a cantilever beam modeled by superimposing the deflection predicted by finite element models on rigid body motion.  In a simple test, transient simulation can be used to determine the static deflection of the beam due to gravity.  A force can also be applied to the tip of the beam. Hyperlinks in the model let you adjust the loading method and other settings of the flexible beam element.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Model</a></li><li><a href="#2">Flexible Beam Subsystem (Finite Element Import Method)</a></li><li><a href="#3">Interface Frame Degrees of Freedom</a></li><li><a href="#5">Results from Simscape Logging: Static Deflection</a></li><li><a href="#6">Results from Simscape Logging: Tip Load</a></li><li><a href="#7">Results from Simscape Logging: Varying Number of Included Dynamic Modes, 3 Frames</a></li><li><a href="#8">Results from Simscape Logging: Varying Number of Included Dynamic Modes, 5 Frames</a></li><li><a href="#9">Results from Simscape Logging: Compare Models with 3 and 5 Interface Frames</a></li><li><a href="#10">Results from Simscape Logging: Set Damping Factor Using Measured Data</a></li></ul></div><h2 id="1">Model</h2><img vspace="5" hspace="5" src="sm_flex_fe_import_beam_01.png" style="width:507px;height:360px;" alt=""> <h2 id="2">Flexible Beam Subsystem (Finite Element Import Method)</h2><p>This subsystem models the flexible body.  It consists of a rigid body and a number of interface frames.  All interface frames except one have six degrees of freedom between them and the rigid body.  Data exported from finite element software is used within the state-space block to calculate the force resisting the deformation of the rigid body. One interface frame has no degrees of freedom associated with it so that the rigid body modes of the flexible body are not added twice.</p><img vspace="5" hspace="5" src="sm_flex_fe_import_beam_02.png" style="width:470px;height:341px;" alt=""> <h2 id="3">Interface Frame Degrees of Freedom</h2><p>A Bushing Joint models the degrees of freedom for the interface frames. Position, velocity, and acceleration are measured from each degree of freedom and are fed to the state-space block.  The forces and torques calculated by the state-space block are applied to this joint.  A filter is required to break the algebraic loop.</p><img vspace="5" hspace="5" src="sm_flex_fe_import_beam_03.png" style="width:434px;height:232px;" alt=""> <h2 id="5">Results from Simscape Logging: Static Deflection</h2><p>This plot shows the vertical deflection of the beam tip when it is subject to a distributed load (Earth's gravity * 100)</p><p>In this model, the default values are for a 0.3m long beam constructed of aluminum (modulus of elasticity = 70 GPa, density = 2800 kg/m^3). The beam is 0.015m wide and 0.005m thick.  For this test, we have increased gravity by a factor of 100 so that we can see the deflection.</p><p>Euler-Bernoulli beam theory predicts the static deflection for a cantilever beam with one fixed end and one free end with equation (1)</p><p><img src="sm_flex_fe_import_beam_eq01741245925440976124.png" alt="$\delta={qL^4\over 8EI}\quad\quad\quad(1)$" style="width:110px;height:21px;"></p><p>Where</p><p><img src="sm_flex_fe_import_beam_eq15226540192103580117.png" alt="$q$" style="width:7px;height:10px;"> = Uniform load on the beam (force/unit length)</p><p><img src="sm_flex_fe_import_beam_eq11350882957237339504.png" alt="$q  = rho*area*gravity$" style="width:154px;height:14px;"></p><p>= 2800*(0.015*0.005)*9.81*100/0.3 = 205.93 N/m</p><p><img src="sm_flex_fe_import_beam_eq11904963258706611165.png" alt="$L$" style="width:10px;height:10px;"> = Length of the beam</p><p><img src="sm_flex_fe_import_beam_eq12521845750295486340.png" alt="$E$" style="width:12px;height:10px;"> = Modulus of elasticity</p><p><img src="sm_flex_fe_import_beam_eq17419315245227113761.png" alt="$I$" style="width:8px;height:10px;"> = Area moment of inertia of cross section</p><p>The area moment of inertia for a rectangular cross section is:</p><p><img src="sm_flex_fe_import_beam_eq18230565883133763172.png" alt="$I = {(x_{width} \cdot x_{thickness}^3) / 12}\quad\quad\quad(2)$" style="width:221px;height:18px;"></p><p>(0.015*0.005^3)/12 = 1.5625e-10 m^4</p><p>Plugging these values into equation (1) yields 205.93*0.3^4/(8*70e9*1.5625e-10) = 0.0191 m</p><p>Transient simulation results match theory quite well.</p><img vspace="5" hspace="5" src="sm_flex_fe_import_beam_04.png" style="width:560px;height:420px;" alt=""> <h2 id="6">Results from Simscape Logging: Tip Load</h2><p>This plot shows the vertical deflection of the beam tip when it is a force is applied to the tip of the beam for a period of time.</p><p>The peaks are used to calculate the damping ratio. We obtained damping ratio by examining the rate of decay in the simulation results for the beam. Looking at successive peaks, we found the logarithmic decrement using the following formula:</p><p><img src="sm_flex_fe_import_beam_eq15377063573866857443.png" alt="$\delta = 1/n \cdot ln(x(t)/x(t+nT))$" style="width:179px;height:15px;"></p><p>The damping ratio can be found from the logarithmic decrement</p><p><img src="sm_flex_fe_import_beam_eq16369449480249093859.png" alt="$\zeta = 1/\sqrt{1+(2\pi/\delta)^2}$" style="width:130px;height:18px;"></p><img vspace="5" hspace="5" src="sm_flex_fe_import_beam_05.png" style="width:560px;height:420px;" alt=""> <h2 id="7">Results from Simscape Logging: Varying Number of Included Dynamic Modes, 3 Frames</h2><p>This plot shows the effect of increasing the number of dynamic modes included in the data imported from the finite element software for the model with 3 interface frames.</p><img vspace="5" hspace="5" src="sm_flex_fe_import_beam_06.png" style="width:560px;height:420px;" alt=""> <h2 id="8">Results from Simscape Logging: Varying Number of Included Dynamic Modes, 5 Frames</h2><p>This plot shows the effect of increasing the number of dynamic modes included in the data imported from the finite element software for the model with 5 interface frames.</p><img vspace="5" hspace="5" src="sm_flex_fe_import_beam_07.png" style="width:560px;height:420px;" alt=""> <h2 id="9">Results from Simscape Logging: Compare Models with 3 and 5 Interface Frames</h2><p>This plot compares the simulation results for models with 3 and 5 interface frames.</p><img vspace="5" hspace="5" src="sm_flex_fe_import_beam_08.png" style="width:560px;height:420px;" alt=""> <h2 id="10">Results from Simscape Logging: Set Damping Factor Using Measured Data</h2><p>The plot below compares the simulation results of the lumped parameter beam with a beam modeled using data exported from finite element software. This step was performed to set the damping factor, which is most reliably set using measured data.  The elastic damping factor in the lumped parameter model was tuned until the simulation results matched the results from the FE import beam model.  This process can be used on measured data taken directly from finite element software and measurements taken from hardware.</p><img vspace="5" hspace="5" src="sm_flex_fe_import_beam_09.png" style="width:502px;height:326px;" alt=""> <img vspace="5" hspace="5" src="sm_flex_fe_import_beam_10.png" style="width:560px;height:420px;" alt=""> <p class="footer">Copyright 2016-2017 The MathWorks, Inc.<br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2016b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% Flexible Beam from Finite Element Data
+% 
+% This example shows a cantilever beam modeled by superimposing the
+% deflection predicted by finite element models on rigid body motion.  In a
+% simple test, transient simulation can be used to determine the static
+% deflection of the beam due to gravity.  A force can also be applied to
+% the tip of the beam. Hyperlinks in the model let you adjust the loading
+% method and other settings of the flexible beam element.
+% 
+% Copyright 2016-2017 The MathWorks, Inc.
+
+
+%% Model
+
+open_system('sm_flex_fe_import_beam')
+set_param(find_system('sm_flex_fe_import_beam','FindAll', 'on','type','annotation','Tag','ModelFeatures'),'Interpreter','off')
+
+%% Flexible Beam Subsystem (Finite Element Import Method)
+%
+% This subsystem models the flexible body.  It consists of a rigid body and
+% a number of interface frames.  All interface frames except one have six
+% degrees of freedom between them and the rigid body.  Data exported from
+% finite element software is used within the state-space block to calculate
+% the force resisting the deformation of the rigid body. One interface
+% frame has no degrees of freedom associated with it so that the rigid body
+% modes of the flexible body are not added twice.
+
+set_param('sm_flex_fe_import_beam/Flexible Beam','LinkStatus','none')
+open_system('sm_flex_fe_import_beam/Flexible Beam','force')
+close_system('sm_flex_fe_import_beam/Flexible Beam/Frame 1/Flex');
+
+%% Interface Frame Degrees of Freedom
+%
+% A Bushing Joint models the degrees of freedom for the interface frames.
+% Position, velocity, and acceleration are measured from each degree of
+% freedom and are fed to the state-space block.  The forces and torques
+% calculated by the state-space block are applied to this joint.  A filter
+% is required to break the algebraic loop.
+
+load_system('sm_flex_body_lib');
+set_param('sm_flex_body_lib','Lock','off')
+open_system('sm_flex_body_lib/FE Import/Bodies/Frame 1/Flex','force');
+set_param('sm_flex_body_lib/FE Import/Bodies/Frame 1','OverrideUsingVariant','Flex');
+
+%%
+bdclose('sm_flex_fe_import_beam')
+open_system('sm_flex_fe_import_beam')
+
+%% Results from Simscape Logging: Static Deflection
+%
+% This plot shows the vertical deflection of the beam tip when it is
+% subject to a distributed load (Earth's gravity * 100)
+%
+% In this model, the default values are for a 0.3m long beam
+% constructed of aluminum (modulus of elasticity = 70 GPa, density = 2800
+% kg/m^3). The beam is 0.015m wide and 0.005m thick.  For this test, we
+% have increased gravity by a factor of 100 so that we can see the
+% deflection.
+%
+% Euler-Bernoulli beam theory predicts the static deflection for a
+% cantilever beam with one fixed end and one free end with equation (1)
+% 
+% $\delta={qL^4\over 8EI}\quad\quad\quad(1)$  
+% 
+% Where
+%
+% $q$ = Uniform load on the beam (force/unit length) 
+% 
+% $q  = rho*area*gravity$ 
+% 
+% = 2800*(0.015*0.005)*9.81*100/0.3 = 205.93 N/m
+%
+% $L$ = Length of the beam
+%
+% $E$ = Modulus of elasticity
+%
+% $I$ = Area moment of inertia of cross section
+%
+% The area moment of inertia for a rectangular cross section is: 
+%
+% $I = {(x_{width} \cdot x_{thickness}^3) / 12}\quad\quad\quad(2)$
+%
+% (0.015*0.005^3)/12 = 1.5625e-10 m^4
+%
+% Plugging these values into equation (1) yields
+% 205.93*0.3^4/(8*70e9*1.5625e-10) = 0.0191 m
+%
+% Transient simulation results match theory quite well.
+
+sm_flex_fe_import_beam_configure_load('sm_flex_fe_import_beam','Gravity');
+sim('sm_flex_fe_import_beam');
+sm_flex_fe_import_beam_plot1ydef
+hold on
+plot([0 10],-0.0191*[1 1],'kREPLACE_WITH_DASH_DASH')
+temp_leg = legend(gca);
+temp_leg_str = temp_leg.String;
+set(legend(gca),'String',{temp_leg.String{1:2},'Theoretical Deflection'})
+
+%% Results from Simscape Logging: Tip Load
+%
+% This plot shows the vertical deflection of the beam tip when it is
+% a force is applied to the tip of the beam for a period of time.
+%
+% The peaks are used to calculate the damping ratio. We obtained damping
+% ratio by examining the rate of decay in the simulation results for the
+% beam. Looking at successive peaks, we found the logarithmic decrement
+% using the following formula:
+%
+% $\delta = 1/n \cdot ln(x(t)/x(t+nT))$
+%
+% The damping ratio can be found from the logarithmic decrement
+%
+% $\zeta = 1/\sqrt{1+(2\pi/\delta)^2}$
+
+sm_flex_fe_import_beam_configure_load('sm_flex_fe_import_beam','Tip Load');
+sim('sm_flex_fe_import_beam');
+sm_flex_fe_import_beam_plot1ydef
+
+%% Results from Simscape Logging: Varying Number of Included Dynamic Modes, 3 Frames
+%
+% This plot shows the effect of increasing the number of dynamic modes
+% included in the data imported from the finite element software for the model with 3 interface frames.
+
+sm_flex_fe_import_beam_compare_numdynmodes_3fr
+
+%% Results from Simscape Logging: Varying Number of Included Dynamic Modes, 5 Frames
+%
+% This plot shows the effect of increasing the number of dynamic modes
+% included in the data imported from the finite element software for the model with 5 interface frames.
+
+sm_flex_fe_import_beam_compare_numdynmodes_5fr
+
+%% Results from Simscape Logging: Compare Models with 3 and 5 Interface Frames
+%
+% This plot compares the simulation results for models with 3 and 5 interface frames.
+
+sm_flex_fe_import_beam_compare_3fr30_5fr80
+
+%% Results from Simscape Logging: Set Damping Factor Using Measured Data
+%
+% The plot below compares the simulation results of the lumped parameter
+% beam with a beam modeled using data exported from finite element
+% software. This step was performed to set the damping factor, which is
+% most reliably set using measured data.  The elastic damping factor in the
+% lumped parameter model was tuned until the simulation results matched the
+% results from the FE import beam model.  This process can be used on
+% measured data taken directly from finite element software and
+% measurements taken from hardware.
+%
+
+open_system('sm_flex_lumped_param_beam')
+set_param(find_system('sm_flex_lumped_param_beam','FindAll', 'on','type','annotation','Tag','ModelFeatures'),'Interpreter','off')
+sm_flex_beam_compare_feimport_lumpedpar
+
+%%
+%clear all
+close all
+bdclose all
+
+##### SOURCE END #####
+--></body></html>

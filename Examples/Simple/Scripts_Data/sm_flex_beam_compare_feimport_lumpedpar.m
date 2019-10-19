@@ -1,6 +1,4 @@
 %% Generate Results: Lumped Parameter Beam, Vary Number of Elements
-% Copyright 2017 The MathWorks, Inc.
-
 open_system('sm_flex_lumped_param_beam');
 set_param([bdroot '/Flexible Beam'],'radio_flextype','Rotation: Z');
 sm_flex_lumped_param_beam_configure_load(bdroot,'Tip Load');

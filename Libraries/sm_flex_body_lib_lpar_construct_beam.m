@@ -61,10 +61,15 @@ if ((~isempty(prev_flex_bod) && length(prev_flex_bod) ~= numelem))
     add_line(thisblock,[sprintf('Transform\nBeamX') '/Rconn1'],['Flex_Elem_' elem_name_prefix '1' '/Lconn1'],'autorouting','on');
     
     % Add and connect remainder of flexible elements
+    %numelem_per_row = 20;
+    numelem_per_row = ceil(sqrt(numelem));
     if (numelem>1)
         for i = 2:1:numelem
+            %disp(['Num elem = ' num2str(i)]);
             elem_name_prefix = repmat('0',1,numDigits-length(num2str(i)));
-            add_block(flex_elem_src,[thisblock '/Flex_Elem_' elem_name_prefix num2str(i)],'Position',blk_or+(i+1)*[80 0 80 0])
+            elem_x = mod(i,numelem_per_row);
+            elem_y = floor(i/numelem_per_row);
+            add_block(flex_elem_src,[thisblock '/Flex_Elem_' elem_name_prefix num2str(i)],'Position',blk_or+(elem_x+1)*[80 0 80 0]+(elem_y)*[0 80 0 80])
             elem_name_prefix_prev = repmat('0',1,numDigits-length(num2str(i-1)));
             add_line(thisblock,['Flex_Elem_' elem_name_prefix_prev num2str(i-1) '/Rconn1'],['Flex_Elem_' elem_name_prefix num2str(i) '/Lconn1'],'autorouting','on');
         end
@@ -73,12 +78,12 @@ if ((~isempty(prev_flex_bod) && length(prev_flex_bod) ~= numelem))
     end
     
     % Create and connect last rigid transform (orient as starting frame)
-    add_block('sm_lib/Frames and Transforms/Rigid Transform',[thisblock '/TransformPortF'],'Position',blk_or+(numelem+2)*[80 0 80 0])
+    add_block('sm_lib/Frames and Transforms/Rigid Transform',[thisblock '/TransformPortF'],'Position',blk_or+(numelem_per_row+2)*[80 0 80 0])
     %set_param([thisblock '/' sprintf('Transform\nBeamF')],'Position',blk_or+(numelem+2)*[80 0 80 0])
     add_line(thisblock,['Flex_Elem_' elem_name_prefix num2str(i) '/Rconn1'],[sprintf('TransformPortF') '/Lconn1'],'autorouting','on');
     
     % Add F Port
-    set_param([thisblock '/F'],'Position',blk_or+(numelem+3)*[80 0 80 0]);
+    set_param([thisblock '/F'],'Position',blk_or+(numelem_per_row+3)*[80 0 80 0]);
     add_line(thisblock,[sprintf('TransformPortF') '/Rconn1'],['F/Rconn1'],'autorouting','on');
     
     set_param([thisblock '/TransformPortF'],...
