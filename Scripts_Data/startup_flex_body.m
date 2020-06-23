@@ -1,6 +1,5 @@
 % Copyright 2017-2019 The MathWorks, Inc.
 FBL_HomeDir = pwd;
-addpath(genpath(pwd))
 
 cd Libraries
 if((exist('+forcesPS','dir')==7 && ~(exist('forcesPS_Lib','file')==4)))

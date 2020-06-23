@@ -1,5 +1,4 @@
 % Copyright 2017-2019 The MathWorks, Inc.
-FBL_HomeDir = pwd;
 
 curr_proj = simulinkproject;
 cd(curr_proj.RootFolder)
