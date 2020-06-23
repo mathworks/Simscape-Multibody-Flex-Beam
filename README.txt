@@ -1,5 +1,5 @@
 Simscape Multibody Flexible Body Library
-Copyright 2017-2019 The MathWorks, Inc.
+Copyright 2017-2020 The MathWorks, Inc.
 
 This set of files contains a library and examples that show
 how to model flexible bodies using Simscape Multibody. 

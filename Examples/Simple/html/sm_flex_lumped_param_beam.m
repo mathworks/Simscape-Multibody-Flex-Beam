@@ -8,7 +8,7 @@
 % The model is configured so that linearization techniques can be used to
 % identify the natural frequencies of the beams at various modes.
 %
-% Copyright 2014-2019 The MathWorks, Inc.
+% Copyright 2014-2020 The MathWorks, Inc.
 
 
 %% Model

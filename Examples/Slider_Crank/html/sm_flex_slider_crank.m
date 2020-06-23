@@ -5,7 +5,7 @@
 % lumped parameter flexible beam model or to model flexibility using data
 % imported from finite element software
 % 
-% Copyright 2016-2019 The MathWorks, Inc.
+% Copyright 2016-2020 The MathWorks, Inc.
 
 
 %% Model

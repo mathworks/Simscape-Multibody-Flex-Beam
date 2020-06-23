@@ -5,7 +5,7 @@
 % finite element data with 3 interface frames with that has 5 interface
 % frames.
 %
-% Copyright 2017-2019 The MathWorks, Inc.
+% Copyright 2017-2020 The MathWorks, Inc.
 
 %% Generate results: FEI beam, 3 Frames
 open_system('sm_flex_fe_import_beam');

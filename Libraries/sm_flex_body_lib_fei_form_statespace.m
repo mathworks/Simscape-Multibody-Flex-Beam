@@ -9,7 +9,7 @@ function sys = sm_flex_body_lib_fei_form_statespace(Nf, M, L, K, H)
 % K must be a numDofs*numDofs matrix
 % H can be a matrix with numDofs columns or an empty matrix
 
-% Copyright 2017-2019 The MathWorks, Inc.
+% Copyright 2017-2020 The MathWorks, Inc.
 
 Nd = length(K);
 Nb = 6*Nf;
