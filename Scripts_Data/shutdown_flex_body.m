@@ -1,4 +1,5 @@
 % Copyright 2017-2020 The MathWorks, Inc.
+
 curr_proj = simulinkproject;
 cd(curr_proj.RootFolder)
 
