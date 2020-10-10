@@ -1,6 +1,8 @@
 # **Simscape Multibody Flexible Body Library**
 Copyright 2017-2020 The MathWorks(TM), Inc.
 
+[![View Flexible Body Models in Simscape Multibody on File Exchange](https://www.mathworks.com/matlabcentral/images/matlab-file-exchange.svg)](https://www.mathworks.com/matlabcentral/fileexchange/47051-flexible-body-models-in-simscape-multibody)
+
 This set of files contains a library and examples that show
 how to model flexible bodies using Simscape Multibody. 
 
