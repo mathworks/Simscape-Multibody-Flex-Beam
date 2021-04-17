@@ -3,7 +3,7 @@ function sm_flex_fe_import_beam_select_numdynmodes(modelname,numdynmodes)
 % FE software with the desired number of dynamic modes for currently
 % configured number of interface frames.
 
-% Copyright 2017-2020 The MathWorks, Inc.
+% Copyright 2017-2021 The MathWorks, Inc.
 
 % Source library for flexible beam element
 library_name = 'sm_flex_body_lib';

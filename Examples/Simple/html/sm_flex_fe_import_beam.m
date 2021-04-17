@@ -7,7 +7,7 @@
 % the tip of the beam. Hyperlinks in the model let you adjust the loading
 % method and other settings of the flexible beam element.
 % 
-% Copyright 2016-2020 The MathWorks, Inc.
+% Copyright 2016-2021 The MathWorks, Inc.
 
 
 %% Model
