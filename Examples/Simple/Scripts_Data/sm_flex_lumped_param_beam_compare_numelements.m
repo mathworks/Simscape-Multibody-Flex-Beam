@@ -5,7 +5,7 @@
 % the simulation results for a flexible beam modeled using the lumped
 % parameter method.
 %
-% Copyright 2017-2021 The MathWorks, Inc.
+% Copyright 2017-2022 The MathWorks, Inc.
 
 %% Generate Results: Lumped Parameter Beam, Vary Number of Elements
 

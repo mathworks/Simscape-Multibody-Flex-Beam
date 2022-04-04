@@ -2,7 +2,7 @@ function [rho, E, G] = sm_flex_body_lib_lpar_matprops(materialtype)
 % Returns density, Young's Modulus, and Shear Modulus properties for
 % requested material
 
-% Copyright 2017-2021 The MathWorks, Inc.
+% Copyright 2017-2022 The MathWorks, Inc.
 
 % Data below taken from 
 % L. Cremer and M. Heckl, Structure-Borne Sound, 

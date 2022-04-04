@@ -3,7 +3,7 @@ function [Nf, frameBody, frameGraphic] = sm_flex_body_lib_fei_configure_beam(blk
 % the rigid bodies according to the settings from the user interface, and
 % configures the degrees of freedom associated with the interface frames.
 
-% Copyright 2014-2021 The MathWorks, Inc.
+% Copyright 2014-2022 The MathWorks, Inc.
 
 % Determine number of frames
 frames_h = find_system(blk_h,'LookUnderMasks','all','FollowLinks','on','SearchDepth',1,'regexp','on','Variant','on','Name','Frame.*');

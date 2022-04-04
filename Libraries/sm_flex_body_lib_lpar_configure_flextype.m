@@ -2,7 +2,7 @@ function sm_flex_body_lib_lpar_configure_flextype(b_h,flextype)
 % This function configures the number of degrees of freedom for flexible
 % elements within lumped parameter beam.
 
-% Copyright 2014-2021 The MathWorks, Inc.
+% Copyright 2014-2022 The MathWorks, Inc.
 
 % Source subsystem within library
 srcLib = 'sm_flex_body_lib/Lumped Parameter';

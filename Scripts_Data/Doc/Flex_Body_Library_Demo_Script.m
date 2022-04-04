@@ -15,4 +15,4 @@
 % <tr>1. Slider Crank: <a href="matlab:open_system('sm_flex_slider_crank.slx');"> Model</a>, <a href="matlab:web('sm_flex_slider_crank.html');">Documentation</a><br>
 % </html>
 % 
-% Copyright 2017-2021 The MathWorks(TM), Inc.
+% Copyright 2017-2022 The MathWorks(TM), Inc.
