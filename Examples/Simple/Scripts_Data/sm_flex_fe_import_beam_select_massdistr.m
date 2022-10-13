@@ -8,7 +8,8 @@ function sm_flex_fe_import_beam_select_massdistr(modelname,massdistr)
 library_name = 'sm_flex_body_lib';
 
 % Find flexible beam block within model
-flexbeam_h = char(find_system(modelname,'regexp','on','SearchDepth',1,'ReferenceBlock',[library_name '/FE Import/Bodies/Body.*']));
+f    = Simulink.FindOptions('SearchDepth',1,'RegExp',true);
+flexbeam_h = Simulink.findBlocks(modelname,'ReferenceBlock',[library_name '/FE Import/Bodies/Body.*'],f);
 
 % Set parameter in mask.
 % Mask initialization will assign mass to a single solid 

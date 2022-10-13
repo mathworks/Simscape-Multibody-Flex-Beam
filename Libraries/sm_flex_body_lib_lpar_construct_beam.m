@@ -25,9 +25,14 @@ end
 numDigits = length(num2str(floor(numelem)));
 
 % Check for existing blocks for linearizable beam
-in_h = find_system(thisblock,'LookUnderMasks','all','SearchDepth',1,'BlockType','Inport');
-out_h = find_system(thisblock,'LookUnderMasks','all','SearchDepth',1,'BlockType','Outport');
-mxc_h = find_system(thisblock,'LookUnderMasks','all','SearchDepth',1,'BlockType','Concatenate');
+f    = Simulink.FindOptions('LookUnderMasks','all','SearchDepth',1);
+in_h = Simulink.findBlocks(thisblock,'BlockType','Inport',f);
+out_h = Simulink.findBlocks(thisblock,'BlockType','Outport',f);
+mxc_h = Simulink.findBlocks(thisblock,'BlockType','Concatenate',f);
+
+%in_h = find_system(thisblock,'LookUnderMasks','all','SearchDepth',1,'BlockType','Inport');
+%out_h = find_system(thisblock,'LookUnderMasks','all','SearchDepth',1,'BlockType','Outport');
+%mxc_h = find_system(thisblock,'LookUnderMasks','all','SearchDepth',1,'BlockType','Concatenate');
 
 % If existing chain of elements has a different length than request,
 % or if the linearization configuration has changed, rebuild chain.

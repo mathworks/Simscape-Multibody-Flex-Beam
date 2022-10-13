@@ -12,7 +12,7 @@
 
 open_system('sm_flex_slider_crank')
 hs_on = sm_flex_slider_crank_configure_hardstop(bdroot,'off');
-set_param(find_system('sm_flex_slider_crank','FindAll', 'on','type','annotation','Tag','ModelFeatures'),'Interpreter','off')
+set_param(find_system('sm_flex_slider_crank','MatchFilter',@Simulink.match.allVariants,'FindAll', 'on','type','annotation','Tag','ModelFeatures'),'Interpreter','off')
 set_param(bdroot,'SimulationCommand','update');
 
 %% Results from Simscape Logging: Comparison with Literature

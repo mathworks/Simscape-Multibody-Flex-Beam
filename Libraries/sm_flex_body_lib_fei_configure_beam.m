@@ -6,6 +6,9 @@ function [Nf, frameBody, frameGraphic] = sm_flex_body_lib_fei_configure_beam(blk
 % Copyright 2014-2022 The MathWorks, Inc.
 
 % Determine number of frames
+%f    = Simulink.FindOptions('LookUnderMasks','all','FollowLinks',true,'SearchDepth',1,'regexp',true);
+%frames_h = Simulink.findBlocks(blk_h,'Name','Frame.*',f);
+
 frames_h = find_system(blk_h,'LookUnderMasks','all','FollowLinks','on','SearchDepth',1,'regexp','on','Variant','on','Name','Frame.*');
 Nf = length(frames_h);
 
@@ -70,7 +73,7 @@ end
 % the variant once per subsystem.
 %
 % Find all variant subsystems that set interface frame degrees of freedom
-rigid_fr = find_system(blk_h,'LookUnderMasks','all','FollowLinks','on','ActiveVariant','Rigid');
+rigid_fr = find_system(blk_h,'MatchFilter',@Simulink.match.allVariants,'LookUnderMasks','all','FollowLinks','on','ActiveVariant','Rigid');
 
 for i=1:length(rigid_fr)
     rigid_frame_name = get_param(rigid_fr{i},'Name');

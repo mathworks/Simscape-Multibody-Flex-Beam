@@ -14,7 +14,7 @@
 %% Model
 
 open_system('sm_flex_lumped_param_beam')
-set_param(find_system('sm_flex_lumped_param_beam','FindAll', 'on','type','annotation','Tag','ModelFeatures'),'Interpreter','off')
+set_param(find_system('sm_flex_lumped_param_beam','MatchFilter',@Simulink.match.allVariants,'FindAll', 'on','type','annotation','Tag','ModelFeatures'),'Interpreter','off')
 
 %% Flexible Beam Subsystem (Lumped Parameter Method)
 %
@@ -100,7 +100,7 @@ sm_flex_lumped_param_beam_calculate_modes
 % 
 
 open_system('sm_flex_fe_import_beam')
-set_param(find_system('sm_flex_fe_import_beam','FindAll', 'on','type','annotation','Tag','ModelFeatures'),'Interpreter','off')
+set_param(find_system('sm_flex_fe_import_beam','MatchFilter',@Simulink.match.allVariants,'FindAll', 'on','type','annotation','Tag','ModelFeatures'),'Interpreter','off')
 sm_flex_beam_compare_feimport_lumpedpar
 
 %% Results from Simscape Logging: Distributed Load

@@ -8,7 +8,8 @@ function sm_flex_fe_import_beam_select_rigid_frame(modelname,rigidframe)
 library_name = 'sm_flex_body_lib';
 
 % Find flexible beam block within model
-flexbeam_h = char(find_system(modelname,'regexp','on','SearchDepth',1,'ReferenceBlock',[library_name '/FE Import/Bodies/Body.*']));
+f    = Simulink.FindOptions('SearchDepth',1,'RegExp',true);
+flexbeam_h = Simulink.findBlocks(modelname,'ReferenceBlock',[library_name '/FE Import/Bodies/Body.*'],f);
 numframes = char(get_param(flexbeam_h,'numframes'));
 
 % Convert input argument ('B', 'Center', 'F') to frame index 

@@ -11,18 +11,21 @@ library_name = 'sm_flex_body_lib';
 load_system(library_name);
 
 % Find flexible beam block within model
-flexbeam_h = char(find_system(modelname,'regexp','on','SearchDepth',1,'ReferenceBlock',[library_name '/FE Import/Bodies/Body .*']));
+f    = Simulink.FindOptions('SearchDepth',1,'RegExp',true);
+flexbeam_h = Simulink.findBlocks(modelname,'ReferenceBlock',[library_name '/FE Import/Bodies/Body.*'],f);
 ref_flexbeam = get_param(flexbeam_h,'ReferenceBlock');
 
 % Replace beam element in model with variant that has 
 % the desired number of interface frames
 if(strcmpi(modeltype,'Body 3 Frames'))
     if(strfind(ref_flexbeam,'Body 5 Frames'))
-        replace_block(modelname,'Name',char(get_param(flexbeam_h,'Name')),[library_name '/FE Import/Bodies/Body 3 Frames'],'noprompt');
+        rpblk = replace_block(modelname,'Name',char(get_param(flexbeam_h,'Name')),[library_name '/FE Import/Bodies/Body 3 Frames'],'noprompt');
+        flexbeam_h = get_param(char(rpblk),'Handle');
     end
 elseif(strcmpi(modeltype,'Body 5 Frames'))
     if(strfind(ref_flexbeam,'Body 3 Frames'))
-        replace_block(modelname,'Name',char(get_param(flexbeam_h,'Name')),[library_name '/FE Import/Bodies/Body 5 Frames'],'noprompt');
+        rpblk = replace_block(modelname,'Name',char(get_param(flexbeam_h,'Name')),[library_name '/FE Import/Bodies/Body 5 Frames'],'noprompt');
+        flexbeam_h = get_param(char(rpblk),'Handle');
     end
 end
 
