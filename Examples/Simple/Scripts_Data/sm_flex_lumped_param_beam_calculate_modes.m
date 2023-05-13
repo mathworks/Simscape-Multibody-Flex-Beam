@@ -1,7 +1,7 @@
 % Calculate natural frequencies and mode shapes for flexible beam
 % with one fixed end and one free end
 
-% Copyright 2014-2022 The MathWorks, Inc.
+% Copyright 2014-2023 The MathWorks, Inc.
 
 mdl = 'sm_flex_lumped_param_beam';
 flexbeam_h = [mdl '/Flexible Beam'];

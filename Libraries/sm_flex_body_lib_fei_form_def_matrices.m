@@ -16,7 +16,7 @@ function [M, L, K, H] = sm_flex_body_lib_fei_form_def_matrices( ...
 %                  the rigid body is attached
 % sensedFeaDofs  : vector of FEA dof indices for dofs to be sensed
 
-% Copyright 2017-2022 The MathWorks, Inc.
+% Copyright 2017-2023 The MathWorks, Inc.
 
 nd = 6;
 

@@ -2,7 +2,7 @@ function sm_flex_lumped_param_beam_configure_load(modelname,loadtype)
 % This function configures the loading conditions for the cantilever beam
 % in model sm_flex_lumped_param_beam.slx
 
-% Copyright 2017-2022 The MathWorks, Inc.
+% Copyright 2017-2023 The MathWorks, Inc.
 if(strcmpi(loadtype,'Tip Load'))
 	% Enable tip load force and disable gravity
     set_param([modelname '/Mechanism Configuration'],'UniformGravity','None');

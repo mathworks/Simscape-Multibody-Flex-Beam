@@ -7,7 +7,7 @@ function [...
 % This function computes the stiffness properties and element length for
 % the flexible elements in the lumped parameter flexible beam.
 
-% Copyright 2014-2022 The MathWorks, Inc.
+% Copyright 2014-2023 The MathWorks, Inc.
 
 % Calculate element length
 element_length = beam_length/numelem;
