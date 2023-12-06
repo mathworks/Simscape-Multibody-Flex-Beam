@@ -1,2 +1,2 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<Info Type="Shutdown" Visible="0" Icon="" File="Scripts_Data/shutdown_flex_body.m" Name="shutdown_flex_body"/>
+<Info File="Scripts_Data/shutdown_flex_body.m" Icon="" Name="shutdown_flex_body" Type="Shutdown" Visible="0"/>
