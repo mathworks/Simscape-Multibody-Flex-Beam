@@ -3,7 +3,7 @@ function sm_flex_body_lib_lpar_construct_beam(b_h,numelem,flextype)
 % Automatically constructs chain of mass-spring-dampers based on arguments
 % in mask of Flex_Body subsystem.
 
-% Copyright 2014-2023 The MathWorks, Inc.
+% Copyright 2014-2024 The MathWorks, Inc.
 
 % Save handle to flex beam block
 thisblock = b_h;

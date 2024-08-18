@@ -4,7 +4,7 @@
 % The plot below shows the comparison between the tip deflection of a beam
 % modeled using lumped parameter as the number of elements is varied. 
 %
-% Copyright 2017-2023 The MathWorks, Inc.
+% Copyright 2017-2024 The MathWorks, Inc.
 
 mdl = bdroot;
 

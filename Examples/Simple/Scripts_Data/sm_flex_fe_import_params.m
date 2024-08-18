@@ -1,5 +1,5 @@
 % Parameters for beam used in sm_flex_fe_import_beam.slx
-% Copyright 2017-2023 The MathWorks, Inc.
+% Copyright 2017-2024 The MathWorks, Inc.
 
 load beamFEData
 

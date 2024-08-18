@@ -3,7 +3,7 @@
 %
 % The plot below shows the vertical deflection of the tip of the beam.
 %
-% Copyright 2017-2023 The MathWorks, Inc.
+% Copyright 2017-2024 The MathWorks, Inc.
 
 % Generate simulation results if they don't exist
 if ~exist('simlog_sm_flex_lumped_param_beam', 'var')
