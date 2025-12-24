@@ -3,7 +3,7 @@ function [Nf, frameBody, frameGraphic] = sm_flex_body_lib_fei_configure_beam(blk
 % the rigid bodies according to the settings from the user interface, and
 % configures the degrees of freedom associated with the interface frames.
 
-% Copyright 2014-2024 The MathWorks, Inc.
+% Copyright 2014-2025 The MathWorks, Inc.
 
 % Determine number of frames
 %f    = Simulink.FindOptions('LookUnderMasks','all','FollowLinks',true,'SearchDepth',1,'regexp',true);

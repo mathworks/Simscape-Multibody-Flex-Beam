@@ -2,7 +2,7 @@ function sm_flex_fe_import_beam_configure_load(modelname,loadtype)
 % This function configures the loading conditions for the cantilever beam
 % in model sm_flex_fe_import_beam.slx
 
-% Copyright 2017-2024 The MathWorks, Inc.
+% Copyright 2017-2025 The MathWorks, Inc.
 
 if(strcmpi(loadtype,'Tip Load'))
     % Enable tip load force and disable gravity

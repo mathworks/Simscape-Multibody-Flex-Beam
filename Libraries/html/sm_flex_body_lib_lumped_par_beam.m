@@ -4,7 +4,7 @@
 % flexible elements, material properties as well as beam cross section and
 % dimensions can be varied from mask parameters.
 % 
-% Copyright 2016-2024 The MathWorks, Inc.
+% Copyright 2016-2025 The MathWorks, Inc.
 
 
 %% Model

@@ -5,7 +5,7 @@
 % modes on the simulation results for the flexible beam modeled using
 % finite element data with three interface frames.
 %
-% Copyright 2017-2024 The MathWorks, Inc.
+% Copyright 2017-2025 The MathWorks, Inc.
 
 %% Generate results: FEI beam, 3 Frames
 open_system('sm_flex_fe_import_beam');

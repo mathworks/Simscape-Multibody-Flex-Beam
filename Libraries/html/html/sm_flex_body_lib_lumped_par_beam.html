@@ -7,9 +7,9 @@ This HTML was auto-generated from MATLAB code.
 To make changes, update the MATLAB code and republish this document.
       -->
 <title>Flexible Beam from Lumped Parameters</title>
-<meta name="generator" content="MATLAB 24.2">
+<meta name="generator" content="MATLAB 25.1">
 <link rel="schema.DC" href="http://purl.org/dc/elements/1.1/">
-<meta name="DC.date" content="2024-09-12">
+<meta name="DC.date" content="2025-12-23">
 <meta name="DC.source" content="sm_flex_body_lib_lumped_par_beam.m">
 <style type="text/css">
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
@@ -163,22 +163,22 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 <img src="sm_flex_body_lib_lumped_par_beam_eq09948628798245163215.png" alt="$l_{element}$"> = Length of flexible beam element</p>
 <p>
 <b>Print internal values to Command Window</b>: Prints internal values to MATLAB Command Window. Resulting values can be inspected to verify that provided parameters are correct. An example of the printed values is shown below.</p>
-<pre class="codeoutput">                                               Value            Units     
-                                             __________    _______________
+<pre class="codeoutput">                                                  Value               Units     
+                                             ________________    _______________
 
-    Area Moment of Inertia, Ixx               0.0026121    {'m^4'        }
-    Area Moment of Inertia, Iyy               0.0026121    {'m^4'        }
-    Torsional Constant, J                    1.5625e-09    {'m^4'        }
-    Cross sectional area, A                     7.5e-05    {'m^2'        }
-    Flexible element length                        0.03    {'m'          }
-    Element Stiffness, Bending about Z       1.7414e+10    {'N*m/rad'    }
-    Element Stiffness, Bending about Y       1.7414e+10    {'N*m/rad'    }
-    Element Stiffness, Torsion about X           4020.8    {'N*m/rad'    }
-    Element Stiffness, Elongation along X         5e+08    {'N/m'        }
-    Element Damping, Bending about Z          4.494e+05    {'N*m/(rad/s)'}
-    Element Damping, Bending about Y          4.494e+05    {'N*m/(rad/s)'}
-    Element Damping, Torsion about X           0.012971    {'N*m/(rad/s)'}
-    Element Damping, Elongation along X           12903    {'N/(m/s)'    }
+    Area Moment of Inertia, Ixx                     0.0026121    {'m^4'        }
+    Area Moment of Inertia, Iyy                     0.0026121    {'m^4'        }
+    Torsional Constant, J                          1.5625e-09    {'m^4'        }
+    Cross sectional area, A                           7.5e-05    {'m^2'        }
+    Flexible element length                              0.03    {'m'          }
+    Element Stiffness, Bending about Z            17414000000    {'N*m/rad'    }
+    Element Stiffness, Bending about Y            17414000000    {'N*m/rad'    }
+    Element Stiffness, Torsion about X       4020.83333333333    {'N*m/rad'    }
+    Element Stiffness, Elongation along X           500000000    {'N/m'        }
+    Element Damping, Bending about Z               449403.098    {'N*m/(rad/s)'}
+    Element Damping, Bending about Y               449403.098    {'N*m/(rad/s)'}
+    Element Damping, Torsion about X            0.01297080625    {'N*m/(rad/s)'}
+    Element Damping, Elongation along X               12903.5    {'N/(m/s)'    }
 
 </pre>
 <h2 id="6">Parameters, Tab <tt>Geometry</tt>
@@ -215,8 +215,8 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 <tt>Rotation: X, Y, Z; Translation: X</tt> - Permits three rotational degree of freedom and one translational degree of freedom along the x-axis.</li>
 </ul>
 </div>
-<p class="footer">Copyright 2016-2024 The MathWorks, Inc.<br>
-<a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2024b</a>
+<p class="footer">Copyright 2016-2025 The MathWorks, Inc.<br>
+<a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2025a</a>
 <br>
 </p>
 </div>
@@ -228,7 +228,7 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 % flexible elements, material properties as well as beam cross section and
 % dimensions can be varied from mask parameters.
 % 
-% Copyright 2016-2024 The MathWorks, Inc.
+% Copyright 2016-2025 The MathWorks, Inc.
 
 
 %% Model

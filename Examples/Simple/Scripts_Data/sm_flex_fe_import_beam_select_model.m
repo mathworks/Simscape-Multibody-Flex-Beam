@@ -4,7 +4,7 @@ function sm_flex_fe_import_beam_select_model(modelname,modeltype)
 % Function replace_block() is used instead of variant subsystems so that
 % the mask and block annotations are visible at the top level of the model.
 
-% Copyright 2017-2024 The MathWorks, Inc.
+% Copyright 2017-2025 The MathWorks, Inc.
 
 % Source library for flexible beam element
 library_name = 'sm_flex_body_lib';
